@@ -3,38 +3,25 @@ import mongoose from 'mongoose';
 const categorySchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     description: {
-        type: String
+        type: String,
     },
     image: {
         type: String,
-        required: true
+        required: true,
     },
     subcategories: [{
-        name: {
-            type: String,
-            required: true,
-        },
-        description: {
-            type: String,
-        },
-        image: {
-            type: String,
-        },
-        status: {
-            type: Boolean,
-            default: true,
-        },
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Subcategory',
     }],
     status: {
         type: Boolean,
-        default: true
+        default: true,
     }
-},
-    {
-        timestamps: true // This adds `createdAt` and `updatedAt` fields automatically
-    });
+}, {
+    timestamps: true,
+});
 
 export default mongoose.model('Category', categorySchema);

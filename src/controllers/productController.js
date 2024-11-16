@@ -1,4 +1,5 @@
-const Product = require('~/models/Product');
+import Product from '~/models/Product';
+
 
 // Get all products
 const getProducts = async (req, res) => {
@@ -12,7 +13,7 @@ const getProducts = async (req, res) => {
                     select: 'name description image status'
                 }
             })
-            .populate('reviews'); // Keep this as it is
+            // .populate('reviews'); // Keep this as it is
         res.status(200).json(products);
     } catch (err) {
         res.status(500).json({ error: err.message });
