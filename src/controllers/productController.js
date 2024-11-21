@@ -33,10 +33,10 @@ const getProduct = async (req, res) => {
                     select: 'name description image status'
                 }
             })
-            .populate({
-                path: 'reviews',
-                populate: { path: 'user', select: 'name email' }
-            });
+            // .populate({
+            //     path: 'reviews',
+            //     populate: { path: 'user', select: 'name email' }
+            // });
 
         if (!product) {
             return res.status(404).json({ error: 'Product not found' });
